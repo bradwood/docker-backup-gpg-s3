@@ -16,7 +16,7 @@ gpg --trust-model always --output ~/$FILENAME.tar.xz.gpg --encrypt --recipient $
 rm ~/$FILENAME.tar.xz
 
 echo "[`date +%Y-%m-%d\ %H:%M:%S`] uploading encrypted backup file to AWS S3..."
-aws s3 cp ~/$FILENAME.tar.xz.gpg s3://$S3_BUCKET_NAME/$FILENAME.tar.xz.gpg --storage-class STANDARD_IA
+aws s3 cp ~/$FILENAME.tar.xz.gpg s3://$S3_BUCKET_NAME/$FILENAME.tar.xz.gpg 
 rm ~/$FILENAME.tar.xz.gpg
 
 echo "[`date +%Y-%m-%d\ %H:%M:%S`] backup process completed"
