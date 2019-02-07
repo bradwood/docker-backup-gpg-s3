@@ -7,9 +7,15 @@ Why should you encrypt your private files before uploading them on S3? Because n
 # Notes regarding bradwood's fork
 I've made the following changes:
 - Added the ability to back up multiple volumes in one pass -- these all need to be mounted under `/backup`
-- Added stopping of containers prior to backups. This relies on the container's name and the volume's name being related such that a regex match can make the link. If a container is called `container` then the associated volume must be called `container-data` in order for `container` to be stopped prior to backup. It is of course started again straight after. If there is no regex-matchable container for a given directory off `/backup/` then this is backed up in the normal fashion without regard to stopping or starting anything 
+- Added stopping of containers prior to backups. This relies on the container's name and the volume's name being related such that a regex match can make the link. If a container is called `container` then the associated volume must be called `container-data` in order for `container` to be stopped prior to backup. It is of course started again straight after. If there is no regex-matchable container for a given directory off `/backup/` then this is backed up in the normal fashion without regard to stopping or starting anything.
 - As a result of the above changes, the concept of `APP_NAME` is now redundant and has been removed.
 - Added checks for environment variables at run time. It will fail if these are missing.
+
+This means you need to pass in multiple volumes to your `docker run` command. You also need to ensure that you mount
+```
+/var/run/docker.sock:/var/run/docker.sock
+```
+ in order to allow the docker client inside the container to stop other containers that it want's to back up.
 
 # Quick Start
 
