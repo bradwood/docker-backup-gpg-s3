@@ -15,7 +15,7 @@ This means you need to pass in multiple volumes to your `docker run` command. Yo
 ```
 /var/run/docker.sock:/var/run/docker.sock
 ```
- in order to allow the docker client inside the container to stop other containers that it want's to back up.
+ in order to allow the docker client inside the container to stop other containers that it wants to back up.
 
 # Quick Start
 
