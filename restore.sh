@@ -2,7 +2,7 @@
 
 gpg --import /keys/*
 
-aws s3 ls s3://$S3_BUCKET_NAME
+aws s3 ls s3://$S3_BUCKET_NAME --recursive --human-readable --summarize
 echo "These are the files currently available in your backup bucket."
 echo "Which file contains the backup you want to restore from?"
 echo -n "File name: "
