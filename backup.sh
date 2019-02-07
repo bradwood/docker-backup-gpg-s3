@@ -15,14 +15,14 @@ for job in $(ls -1 ); do
         # Container is not running or does not exist, so safe to back up
         echo "[`date +%Y-%m-%d\ %H:%M:%S`] container $CONTAINER_NAME is not running or does not exist..."
         echo "[`date +%Y-%m-%d\ %H:%M:%S`] taring the $job folder..."
-        tar cJf ~/$FILENAME.tar.xz ./$job/*
+        tar cJf ~/$FILENAME.tar.xz ./$job/.
     else
         # need to stop it before doing the backup, then start it again
         echo "[`date +%Y-%m-%d\ %H:%M:%S`] container $CONTAINER_NAME is running. Stopping it first..."
         docker stop $CONTAINER_NAME
 
         echo "[`date +%Y-%m-%d\ %H:%M:%S`] taring the $job folder..."
-        tar cJf ~/$FILENAME.tar.xz ./$job/*
+        tar cJf ~/$FILENAME.tar.xz ./$job/.
 
         echo "[`date +%Y-%m-%d\ %H:%M:%S`] tar complete. Starting container $CONTAINER_NAME ..."
         docker start $CONTAINER_NAME
